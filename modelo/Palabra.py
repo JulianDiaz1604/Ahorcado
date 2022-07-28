@@ -4,7 +4,7 @@ class Palabra:
     def __init__(self, palabra,complejidad,usada):
         self.palabra = palabra
         self.complejidad=complejidad
-        self.usada =False
+        self.usada = False
 
 
 complejidadBaja = [loca, barco]
@@ -13,10 +13,6 @@ complejidadAlta = [esternocleidomastoideo,anticonstitucionalidad]
 baja=len(complejidadBaja)
 media = len(complejidadMedia)
 alta=len(complejidadAlta)
-
-
-
-
 
 
 electron = Palabra("electron",2,false)
