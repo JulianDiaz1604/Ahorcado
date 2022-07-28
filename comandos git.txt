@@ -1,0 +1,10 @@
+git clone URL_DEL_REPOSITORIO (Para bajar el proyecto por primera vez)
+
+git status 
+git add .
+git status
+git commit -m "COMENTARIO CON LOS CAMBIOS QUE SE HICIERON"
+git status
+git pull
+git status
+git push
