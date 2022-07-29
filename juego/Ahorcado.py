@@ -1,4 +1,12 @@
-menuprincipal = int(input("Menu Principal: \n0.Salir. \n1.Instrucciones. \n2.Eligir la complejidad. \n3.Agregar palabras a la lista. \n"))
+from os import system
+import juego
+from listaPalabra.listarPalabras import *
+
+
+menuprincipal = int(input("Menu Principal: \n0.Salir. \n1.Instrucciones. \n2.Eligir la complejidad. \n3.Agregar palabras a la lista. "
+                          "\n4.Mostrar palabras.\n"))
+system("cls")
+puntos = 0
 
 while menuprincipal != 0:
 
@@ -9,29 +17,42 @@ while menuprincipal != 0:
 
     elif menuprincipal == 2:
         print("Ingresando a la complejidad.")
-        complejidad = int(input("Complejidad:\n1. Complejidad baja. \n2. Complejidad media. \n3. Complejidad alta. \n4.Volve al menu. \n"))
-        while complejidad != 0:
-            if complejidad == 1:
-                print("Jugando en complejidad baja")
-            elif complejidad == 2:
-                print("Jugando en complejidad media")
-            elif complejidad == 3 :
-                print("Jugando en complejidad alta")
+        opcion = int(input("\nComplejidad:\n1. Complejidad baja. \n2. Complejidad media. \n3. Complejidad alta. \n4.Volver al menu."
+                           " \n\nIngrese una opcion: "))
+        system("cls")
+        while opcion != 0:
+            if opcion == 1:
+                palabra = filtro(1)
+                print("\nJugando en complejidad baja\n")
+                puntos = puntos + juego.juego(4, palabra)
+            elif opcion == 2:
+                palabra = filtro(2)
+                print("\nJugando en complejidad media\n")
+                puntos = puntos + juego.juego(6, palabra)
+            elif opcion == 3:
+                palabra = filtro(3)
+                print("\nJugando en complejidad alta\n")
+                puntos = puntos + juego.juego(8, palabra)
 
-            elif complejidad == 4:
+            elif opcion == 4:
                 print("Volviendo al menu ....")
 
             else:
                 print("Ingrese una complejidad valida")
 
-
-            complejidad = int(input("Complejidad: \n1. Complejidad baja \n2. Complejidad media \n3. Complejidad alta"))
+            opcion = int(input("Complejidad: \n1. Complejidad baja \n2. Complejidad media \n3. Complejidad alta"))
 
     elif menuprincipal == 3:
         print("Agregando palabras a la lista")
         print("Ingrese la palabra que desea agregar a la lista: ")
         palabra = input()
+        anadir(palabra)
         print("La palabra ingresada a la lista es: ", palabra)
+
+    elif menuprincipal == 4:
+        opcion = int(input("Complejidad:\n1. Complejidad baja. \n2. Complejidad media. \n3. Complejidad alta. \n4.Volver al menu."
+                           " \n\nIngrese una opcion: "))
+        mostrarLista(1)
 
     else:
         print("Por fevor digite una opcion correcta")

@@ -1,33 +1,67 @@
 import time
+from os import system
 
 
 def juego(vidas, palabra):
-
     cont = 0
-    puntos = 0
     letrasUsuario = ''
+    vidasRestantes = vidas
+    perdio = False
 
-    while cont != vidas:
+    while not perdio:
+        system("cls")
+        fallo = False
+        fallas = 0
+        print("\n")
         for letra in palabra:
             if letra in letrasUsuario:
                 print(letra, end='')
             else:
                 print("*", end='')
-                cont += 1
-        
-        letraUsuario = input("Introduce una letra: ").lower()
+                fallas = fallas + 1
+
+        if fallas == 0:
+            print("\n\nFelicidades, Ganaste!!")
+            break
+
+        print("\n\nLetras Usadas: " + letrasUsuario)
+        print("Vidas restantes: " + str(vidasRestantes))
+        letraUsuario = input("\nIntroduce una letra: ").lower()
         letrasUsuario = letrasUsuario + " " + letraUsuario
+        time.sleep(0.5)
 
         if letraUsuario not in palabra:
-            cont+=1
-            print("Letra incorrecta")
+            cont += 1
+            print("Letra incorrecta\n")
+            time.sleep(0.7)
+            fallo = True
+
+        if fallo:
+            vidasRestantes = vidasRestantes - 1
 
         if cont == vidas:
-            print("Fin del juego")
+            print("\nFin del juego")
+            perdio = True
 
-    if cont == 0:
-        tamanoPalabra = len(palabra)
+    puntos = calcularPuntos(cont, len(palabra))
+    print("\nPuntuacion: " + str(puntos))
+    input("\n\nPresione 'enter' para continuar")
+    return puntos
+
+
+def calcularPuntos(fallos, tamanoPalabra):
+    puntos = 0
+    if tamanoPalabra <= 5:
+        puntos = puntos + 1
+    elif tamanoPalabra > 5 and tamanoPalabra <= 12:
+        puntos = puntos + 2
+    else:
+        puntos = puntos + 3
+
+    if fallos == 0:
         if tamanoPalabra <= 12:
-            puntos += 1
+            puntos = puntos + 1
         else:
-            puntos += 2
+            puntos = puntos + 2
+
+    return puntos

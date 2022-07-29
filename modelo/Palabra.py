@@ -1,7 +1,10 @@
 class Palabra:
 
-    def __init__(self, palabra,complejidad,usada):
+    def __init__(self, palabra, complejidad, usada):
         self.palabra = palabra
         self.complejidad=complejidad
         self.usada = usada
 
+
+    def getPalabra(self):
+        return self.palabra
