@@ -6,9 +6,9 @@ def juego(vidas, palabra):
     cont = 0
     letrasUsuario = ''
     vidasRestantes = vidas
-    perdio = False
+    termino = False
 
-    while not perdio:
+    while not termino:
         system("cls")
         fallo = False
         fallas = 0
@@ -22,6 +22,7 @@ def juego(vidas, palabra):
 
         if fallas == 0:
             print("\n\nFelicidades, Ganaste!!")
+            puntos = calcularPuntos(cont, len(palabra))
             break
 
         print("\n\nLetras Usadas: " + letrasUsuario)
@@ -47,9 +48,10 @@ def juego(vidas, palabra):
 
         if cont == vidas:
             print("\nFin del juego")
-            perdio = True
+            termino = True
+            break
 
-    puntos = calcularPuntos(cont, len(palabra))
+    termino = True
     print("\nPuntuacion: " + str(puntos))
     input("\n\nPresione 'enter' para continuar")
     return puntos
