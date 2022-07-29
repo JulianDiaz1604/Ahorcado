@@ -40,21 +40,21 @@ def anadir(palabra):
 def filtro(complejidad):
 
     if (complejidad == 1):
-        auxBajo = random.randint(0, len(complejidadBaja))
+        auxBajo = random.randint(0, len(complejidadBaja)-1)
         if (sirve(complejidadBaja[auxBajo])):
             return complejidadBaja[auxBajo].getPalabra()
         else:
             filtro(complejidad)
 
     elif (complejidad == 2):
-        auxMedio = random.randint(0, len(complejidadMedia))
+        auxMedio = random.randint(0, len(complejidadMedia)-1)
         if (sirve(complejidadMedia[auxMedio])):
             return complejidadMedia[auxMedio].getPalabra()
         else:
             filtro(complejidad)
 
     elif (complejidad == 3):
-        auxAlto = random.randint(0, len(complejidadAlta))
+        auxAlto = random.randint(0, len(complejidadAlta)-1)
         if (sirve(complejidadAlta[auxAlto])):
             return complejidadAlta[auxAlto].getPalabra()
 

@@ -27,7 +27,6 @@ def juego(vidas, palabra):
         print("\n\nLetras Usadas: " + letrasUsuario)
         print("Vidas restantes: " + str(vidasRestantes))
         letraUsuario = input("\nIntroduce una letra: ").lower()
-        letrasUsuario = letrasUsuario + " " + letraUsuario
         time.sleep(0.5)
 
         if letraUsuario not in palabra:
@@ -35,6 +34,13 @@ def juego(vidas, palabra):
             print("Letra incorrecta\n")
             time.sleep(0.7)
             fallo = True
+        elif letraUsuario in letrasUsuario:
+            cont += 1
+            print("La letra ya ha sido usada\n")
+            time.sleep(0.7)
+            fallo = True
+
+        letrasUsuario = letrasUsuario + " " + letraUsuario
 
         if fallo:
             vidasRestantes = vidasRestantes - 1
